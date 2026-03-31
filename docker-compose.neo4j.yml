@@ -1,0 +1,19 @@
+# Neo4j for article → graph ingestion (LangGraph pipeline).
+# Usage: docker compose -f docker-compose.neo4j.yml up -d
+# Bolt: bolt://localhost:7687  (user neo4j / password from NEO4J_AUTH)
+
+services:
+  neo4j:
+    image: neo4j:5-community
+    container_name: neo4j-data-graph
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    environment:
+      NEO4J_AUTH: neo4j/password
+    volumes:
+      - neo4j_data_graph:/data
+
+volumes:
+  neo4j_data_graph:
+
